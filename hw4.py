@@ -21,8 +21,13 @@ def is_unique(word):
 	Returns:
 		(bool) True if the string's characters are unique, False otherwise.
 	"""
-	pass
+	listWord = list(word)
+	for i in len(listWord) - 1 :
+		if listWord[i] == listWord[i + 1] :
+			return False
+	return True
 
+	print(is_unique('g'))
 
 # Counting Anagrams
 def count_anagrams(arr, uniq):
@@ -36,7 +41,17 @@ def count_anagrams(arr, uniq):
 	Returns:
 		(int) the number of anagrams of uniq in arr.
 	"""
-	pass
+	count = 0
+	uniqList = list(unig)
+	for i in len(arr) :
+		if (len(uniq) == len(arr[i])) :
+			arrList = list(arr[i])
+			for i in len(arrList) :
+				if uniqList[i] == arrList[j] :
+					del arrList[j]
+			if (len(arrList) == 0) :
+				count += 1
+	return count
 
 
 # Anagram of Palindrome
@@ -50,7 +65,17 @@ def anagram_of_palindrome(word):
 	Returns:
 		(bool) whether or not the input string is an anagram of a palindrome.
 	"""
-	pass
+	NUM_CHARS = 256
+	count = [0 for i in range(NUM_CHARS)]
+	for i in len(word):
+		count[ord(i)] += 1
+	odd = 0
+	for i in range(NO_OF_CHARS):
+		if (count[i] & 1):
+			odd += 1
+		if (odd > 1):
+			return False
+		return True
 
 
 # Reverse Dictionary
@@ -82,8 +107,18 @@ def alphabet_finder(sentence):
 	Returns:
 		(str) the shortest substring of sentence that satisfies both (1) and (2).
 	"""
-	pass
-
+	letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m" "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+	for i in range(len(sentence) - 1) :
+		for j in range(len(letters)) :
+			if (sentence[i : i + 1] == letters[j]) :
+				del letters[j]
+				break
+			if (len(letters) == 0) :
+				return sentence[0 : i + 1]
+	return None
+	
+	print(alphabet_finder("hi!abcdefghijklmnopqrstuvwxy you wont see a z till there!"))
+	print(2)
 
 # Happy Numbers
 def happy_numbers(n):
@@ -98,3 +133,15 @@ def happy_numbers(n):
 		(int) the number of happy numbers from 1 to n.
 	"""
 	pass
+	''' count = 0
+	a = 1
+	visited = set()
+	while 1:
+    	if a == 1:
+        	print "Number is happy!"
+        	break
+    	a = sum(int(c) ** 2 for c in str(a))
+    	if a in visited:
+        	print "Number is sad!"
+        	break
+    	visited.add(a) '''
